@@ -21,7 +21,7 @@ rule token = parse
 | '('   { LPAREN }  | ')'   { RPAREN }
 | '<'   { LCAR }    | '>'   { RCAR } (* Also relational operators *)
 | '['   { LBRACK }  | ']'   { RBRACK }
-| ';'   { SEMI }    | ':'   { COLON }
+| ';'   { SEMI }    (* | ':'   { COLON } *)
 | ','   { COMMA }   | '|'   { VBAR }
 
 (* Arithmetic Operators *)
@@ -46,6 +46,10 @@ rule token = parse
 
 (* Declarative Keywords *)
 | "set"   { SET }   | "state" { STATE }
+
+(* Distribution Keywords *)
+| "normal"	{ NORM }	| "binomial"	{ BINOM }
+| "gamma"	{ GAMMA }	| "uniform"		{ UNIFORM }
 
 (* Function Symbols & Keywords *)
 | "->"      { FDELIM }  (*| "=>"    { FRTYPE }*)

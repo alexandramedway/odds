@@ -6,7 +6,7 @@ let stringify = function
   | LPAREN -> "LPAREN"  | RPAREN -> "RPAREN"
   | LCAR -> "LCAR"      | RCAR -> "RCAR"
   | LBRACK -> "LBRACK"  | RBRACK -> "RBRACK"
-  | SEMI -> "SEMI"      | COLON -> "COLON"
+  | SEMI -> "SEMI"      (*| COLON -> "COLON"*)
   | COMMA -> "COMMA"    | VBAR -> "VBAR"
 
   (* Arithmetic Operators *)
@@ -31,6 +31,10 @@ let stringify = function
 
   (* Declarative Keywords *)
   | SET -> "SET"   | STATE -> "STATE"
+
+  (* Distribution Keywords *)
+  | NORM -> "NORM"    | BINOM -> "BINOM"
+  | GAMMA -> "GAMMA"  | UNIFORM -> "UNIFORM"
 
   (* Function Symbols & Keywords *)
   | FDELIM -> "FDELIM"  (*| FRTYPE *)

@@ -48,8 +48,8 @@ rule token = parse
 | "set"   { SET }   | "state" { STATE }
 
 (* Distribution Keywords *)
-| "normal"	{ NORM }	| "binomial"	{ BINOM }
-| "gamma"	{ GAMMA }	| "uniform"		{ UNIFORM }
+| "normal"  { NORM }	| "binomial"  { BINOM }
+| "gamma"   { GAMMA }	| "uniform"   { UNIFORM }
 
 (* Function Symbols & Keywords *)
 | "->"      { FDELIM }  (*| "=>"    { FRTYPE }*)

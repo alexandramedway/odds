@@ -30,10 +30,8 @@ type token =
 | SET   | STATE
 
 (* Distribution Keywords *)
-| NORM
-| BINOM
-| GAMMA
-| UNIFORM
+| NORM    | GAMMA
+| BINOM   | UNIFORM
 
 (* Function Symbols & Keywords *)
 | FDELIM  (*| FRTYPE *)

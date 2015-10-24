@@ -3,7 +3,7 @@ type token =
 | LPAREN  | RPAREN
 | LCAR    | RCAR
 | LBRACK  | RBRACK
-| SEMI    | COLON
+| SEMI    (*| COLON *)
 | COMMA   | VBAR
 
 (* Arithmetic Operators *)
@@ -28,6 +28,10 @@ type token =
 
 (* Declarative Keywords *)
 | SET   | STATE
+
+(* Distribution Keywords *)
+| NORM    | GAMMA
+| BINOM   | UNIFORM
 
 (* Function Symbols & Keywords *)
 | FDELIM  (*| FRTYPE *)

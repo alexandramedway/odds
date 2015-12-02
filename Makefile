@@ -15,3 +15,4 @@ test: build
 clean:
 	cd compiler; make clean
 	cd test; make clean
+	cd test; cd compiler; make clean

@@ -13,3 +13,6 @@ print(len(ints_0))
 z_3 = ([5] + ints_0)
 z_3
 print(z_3)
+a_4 = ([5] + ints_0)
+a_4
+print(a_4)

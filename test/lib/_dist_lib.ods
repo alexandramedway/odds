@@ -1,0 +1,16 @@
+do uniform = (x) -> return 1
+do d1 = <0, 1> | uniform |
+do d2 = <0, 2> | uniform |
+
+do d1 <+> d2
+do dist_mult(d1, d2)
+do d1 <*> d2
+do dist_add(d1, d2)
+do d1 |+ 2 
+do dist_shift(2, d1)
+do d1 |* 2 
+do dist_stretch(2, d1)
+do d1 |** 2
+do dist_exp(2, d1)
+do d1 <> 2 
+do dist_sample(2, d1)

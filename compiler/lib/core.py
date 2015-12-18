@@ -24,6 +24,7 @@ SAMPLE_STEP = 100
 PLOT = False
 
 def exception(s):
+    """Write exception s to stderr and exit program"""
     sys.stderr.write("%s\n" % s)
     exit(1)
 
@@ -48,6 +49,8 @@ def print_dist(dist):
 
 def make_dist(start, end, f):
     """Return a list generated from dist<min, max> | f"""
+    if end <= start: 
+        exception("dist_make: start cannot be greater than end")
     step = (end - start) * 1.0 / INDEX_STEP
     indices = [ start + step * x for x in range(INDEX_STEP) ]
 
@@ -69,8 +72,24 @@ def make_dist(start, end, f):
             cum_i = cum_i + 1
     return dist_list
 
+
+def dist_add(d1, d2):
+    """Return the sum of two distributions, adding each combination"""
+    s1 = d1[random.randint(0, SAMPLE_STEP - 1)::SAMPLE_STEP]
+    s2 = d2[random.randint(0, SAMPLE_STEP - 1)::SAMPLE_STEP]
+    return sorted([ x + y for x in s1 for y in s2 ])
+
+def dist_mult(d1, d2):
+    """Return the product of two distributions, multiplying each combination"""
+    s1 = d1[random.randint(0, SAMPLE_STEP - 1)::SAMPLE_STEP]
+    s2 = d2[random.randint(0, SAMPLE_STEP - 1)::SAMPLE_STEP]
+    return sorted([ x * y for x in s1 for y in s2 ])
+
 def make_discr_dist(vals, weights):
     """Return a list generated from dist<vals, weights>"""
+    if len(vals) != len(weights): 
+        exception("dist_make: discrete dist with different sized lists")
+    
     cum_weights = [sum(weights[:i+1]) for i in xrange(len(weights))]
     rands = sorted([ random.uniform(0, max(cum_weights)) for x in range(DIST_LENGTH) ])
 
@@ -85,36 +104,35 @@ def make_discr_dist(vals, weights):
             cum_i = cum_i + 1
     return dist_list
 
-def add_dist(d1, d2):
-    start1 = random.randint(0, 99)
-    s1 = d1[start1::SAMPLE_STEP]
-    start2 = random.randint(0, 99)
-    s2 = d2[start2::SAMPLE_STEP]
-    add = []
-    for i in s1:
-        for j in s2:
-            add.append(i + j)
-    return sorted(add)
-
-def mult_dist(d1, d2):
-    start1 = random.randint(0, 99)
-    s1 = d1[start1::SAMPLE_STEP]
-    start2 = random.randint(0, 99)
-    s2 = d2[start2::SAMPLE_STEP]
-    mult = []
-    for i in s1:
-        for j in s2:
-            mult.append(i * j)
-    return sorted(mult)
-
 def shift_dist(d, n):
+    """Shift each element in distribution d by n"""
     return [ x + n for x in d ]
 
-def stretch_dist(d, n):
+def dist_stretch(n, d):
+    """Stretch distribution d, multiplying each element by n"""
     return [ x * n for x in d ]
 
-def exp_dist(d, n):
+def dist_exp(n, d):
+    """Exponentiate distribution d, raising each element to power n"""
     return [ x ** n for x in d ]
+
+def dist_sample(n, d):
+    """Return a random sample of n elements in distribution d"""
+    return sorted([ random.randint(0, DIST_LENGTH - 1) for x in range(n) ])
+
+def P(n, d):
+    """Return the probability that the distribution is less than 
+    the inputted value
+    """
+    return len([i for i in d if i < n]) / DIST_LENGTH
+
+def E(d):
+    """ Expected value of the distribution """
+    return sum(d) / DIST_LENGTH
+
+def concat_str(s1, s2):
+    """ Return s1 + s2 """
+    return s1 + s2
 
 """
 END ODDS CORE LIBRARY

@@ -1,8 +1,8 @@
 [
-    Do(List([])) ;
-    Do(List([Num_lit(1)])) ;
-    Do(List([Num_lit(1) ; Num_lit(2) ; Num_lit(3)])) ;
-    Do(List([Num_lit(42.) ; Num_lit(42.5)])) ;
-    Do(List([String_lit(hello) ; String_lit(world)])) ;
-    Do(List([Bool_lit(true) ; Bool_lit(false) ; Bool_lit(true)]))
+    Do(LDecl([])) ;
+    Do(LDecl([Num_lit(1)])) ;
+    Do(LDecl([Num_lit(1) ; Num_lit(2) ; Num_lit(3)])) ;
+    Do(LDecl([Num_lit(42.) ; Num_lit(42.5)])) ;
+    Do(LDecl([String_lit(hello) ; String_lit(world)])) ;
+    Do(LDecl([Bool_lit(true) ; Bool_lit(false) ; Bool_lit(true)]))
 ]

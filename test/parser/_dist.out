@@ -25,5 +25,6 @@
     Do(Binop(Id(x), D_Times, Id(x)));
     Do(Binop(Id(x), D_Shift, Num_lit(2)));
     Do(Binop(Id(x), D_Stretch, Num_lit(2)));
-    Do(Binop(Id(x), D_Power, Num_lit(2)))
+    Do(Binop(Id(x), D_Power, Num_lit(2)));
+    Do(Binop(Id(x), D_Sample, Num_lit(100)))
 ]

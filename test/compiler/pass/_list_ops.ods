@@ -17,3 +17,6 @@ do print(len(ints))
 /* list cons test */
 do z = cons(5, ints)
 do print(z)
+
+do a = 5::ints
+do print(a)

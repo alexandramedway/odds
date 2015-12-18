@@ -11,11 +11,12 @@ let stringify = function
   | LCAR -> "LCAR"      | RCAR -> "RCAR"
   | LBRACE -> "LBRACE"  | RBRACE -> "RBRACE"
   | COMMA -> "COMMA"    | VBAR -> "VBAR"
-  | DDELIM -> "DDELIM"
+  | DDELIM -> "DDELIM"  | DISC -> "DISC"
 
   (* Dist Operators *)
   | DPLUS -> "DPLUS"    | DTIMES -> "DTIMES"
-  | DPOWER -> "DPOWER"
+  | DPOWER -> "DPOWER"  | DSHIFT -> "DSHIFT"
+  | DSTRETCH -> "DSTRETCH"
 
   (* Arithmetic Operators *)
   | PLUS -> "PLUS"     | MINUS -> "MINUS"
@@ -25,6 +26,9 @@ let stringify = function
   (* Relational Operators *)
   | EQ -> "EQ"    | NEQ -> "NEQ"
   | LEQ -> "LEQ"  | GEQ -> "GEQ"
+
+  (* List Operators *)
+  | CONS -> "CONS"
 
   (* Logical Operators & Keywords *)
   | AND -> "AND"   | OR -> "OR"

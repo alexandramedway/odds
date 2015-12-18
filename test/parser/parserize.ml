@@ -14,6 +14,7 @@ let txt_of_binop = function
   | D_Shift -> "D_Shift"
   | D_Stretch -> "D_Stretch"
   | D_Power -> "D_Power"
+  | D_Sample -> "D_Sample"
   (* Arithmetic *)
   | Add -> "Add"
   | Sub -> "Sub"
@@ -30,6 +31,7 @@ let txt_of_binop = function
   | Leq -> "Leq"
   | Greater -> "Greater"
   | Geq -> "Geq"
+  | Cons -> "::"
 
 (* Expressions *)
 let txt_of_num = function
@@ -48,8 +50,9 @@ let rec txt_of_expr = function
   | Call(f, args) -> sprintf "Call(%s, [%s])"
       (txt_of_expr f) (txt_of_list args)
   | Assign(x, e) -> sprintf "Assign(%s, %s)" x (txt_of_expr e)
-  | List(l) -> sprintf "List([%s])" (txt_of_list l)
+  | LDecl(l) -> sprintf "LDecl([%s])" (txt_of_list l)
   | Dist(d) -> txt_of_dist d
+  | Discr_dist(d) -> txt_of_discr_dist d
   | Fdecl(f)-> txt_of_fdecl f
   | Cake(fdecl, args) -> sprintf "Cake(%s, [%s])"
       (txt_of_expr fdecl) (txt_of_list args) 
@@ -59,6 +62,10 @@ let rec txt_of_expr = function
 and txt_of_dist d =
   sprintf "Dist({ min=%s ; max=%s ; dist_func=%s })"
     (txt_of_expr d.min) (txt_of_expr d.max) (txt_of_expr d.dist_func)
+
+and txt_of_discr_dist d =
+  sprintf "Dist({ vals=%s ; weights=%s })"
+    (txt_of_expr d.vals) (txt_of_expr d.weights)
 
 (* Function declarations *)
 and txt_of_fdecl f =

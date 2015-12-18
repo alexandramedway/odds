@@ -38,7 +38,11 @@ rule token = parse
 
 (* Dist Operators *)
 | "<+>" { DPLUS }   | "<*>" { DTIMES }
-| "^^"  { DPOWER }
+| "|**" { DPOWER }  | "|*"  { DSTRETCH }
+| "|+"  { DSHIFT }
+
+(* List Operator *)
+| "::"    { CONS }
 
 (* Arithmetic Operators *)
 | '+'   { PLUS }    | '-'   { MINUS }

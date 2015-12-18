@@ -17,3 +17,5 @@ let str_of_file file =
     | None -> close_in ic; String.concat "\n" (List.rev acc)
     | Some(s) -> aux (s :: acc) in
   aux []
+
+let conclude_program () = "if PLOT:\n\tplt.show()"

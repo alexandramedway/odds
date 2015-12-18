@@ -4,4 +4,6 @@ env:
     - OCAML_VERSION=4.01.0 OPAM_VERSION=1.2.0
 before_script:
     - bash -ex config/travis_install.sh
+install:
+    - pip install -r config/requirements.txt
 script: make test
